@@ -15,9 +15,8 @@ Menu opened
 
 1. Run command prompt into the directory.
 2. Run `npm install`.
-3. Run `bower install`.
-4. Run `gulp`.
-5. Or you can access from this [URL](https://ahmed-saber.github.io/udacity-neighborhood-map-project/)
+3. Run `gulp`.
+4. Or you can access from this [URL](https://ahmed-saber.github.io/udacity-neighborhood-map-project/)
 
 ## Project details
 

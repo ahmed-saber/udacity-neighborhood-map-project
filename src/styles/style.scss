@@ -8,7 +8,8 @@ Import
 /* ==========================================================================
 Global CSS
 ========================================================================== */
-body{
+
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -55,7 +56,6 @@ Header
 
 #header {
     padding-top: 30px;
-
     .menu-holder {
         position: absolute;
         top: 0;
@@ -66,28 +66,23 @@ Header
         height: 100vh;
         z-index: 555;
         color: #fff;
-
-        &.open{
+        &.open {
             left: 0;
+        }
+        h3 {
+            font-size: 1em;
+            padding: 15px;
+            margin: 0;
+            font-weight: bold;
         }
         .menu-links {
             margin: 0;
             padding: 0;
             li {
-                h3{
-                    font-size: 1em;
-                    padding: 15px;
-                    margin: 0;
-                    font-weight: bold;
-                }
-                a {
-                    display: block;
-                    text-decoration: none;
-                    padding: 10px 15px;
-                    color: #fff;
-                    &:hover {
-                        background-color: #000;
-                    }
+                padding: 10px 15px;
+                color: #fff;
+                &:hover {
+                    background-color: #000;
                 }
             }
         }

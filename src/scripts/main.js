@@ -131,6 +131,9 @@ function callApi(location){
             // VARS
             location.info = data;
             addMarker(location);
+        },
+        error:function(){
+            alert("There is an error with the Foursquare API call.");
         }
     });
 }
@@ -139,3 +142,8 @@ function callApi(location){
 $('#menuToggleBtn').click(function () {
     $('.menu-holder').toggleClass('open');
 });
+
+// error handler
+function googleApi(){
+    alert("Google Maps API has failed to load.");
+}

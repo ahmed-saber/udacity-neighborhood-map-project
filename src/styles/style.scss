@@ -66,23 +66,32 @@ Header
         height: 100vh;
         z-index: 555;
         color: #fff;
+        #menuToggleBtn{
+            position: fixed;
+            left: 15px;
+            top: -8px;
+        }
         &.open {
             left: 0;
         }
         h3 {
-            font-size: 1em;
-            padding: 15px;
+            background: #000;
+            font-size: 1.3em;
+            padding: 53px 15px 15px;
             margin: 0;
             font-weight: bold;
+            color: #1cc6ff;
         }
         .menu-links {
             margin: 0;
             padding: 0;
             li {
+                border-bottom: 1px solid #3c3c3c;
+                cursor: pointer;
                 padding: 10px 15px;
                 color: #fff;
                 &:hover {
-                    background-color: #000;
+                    background-color: rgb(43, 43, 43);
                 }
             }
         }

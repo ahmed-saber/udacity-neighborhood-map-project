@@ -17,7 +17,7 @@ Menu opened
 2. Run `npm install`.
 3. Run `bower install`.
 4. Run `gulp`.
-5. Or you can access from this [URL](neighborhood.surge.sh)
+5. Or you can access from this [URL](https://ahmed-saber.github.io/udacity-neighborhood-map-project/)
 
 ## Project details
 

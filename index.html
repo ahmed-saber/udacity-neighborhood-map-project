@@ -27,9 +27,9 @@
     <div id="page" class="container">
         <header id="header">
             <nav class="menu-holder">
-                <ul class="menu-links">
-                    <li><h3>Neighborhood Map project</h3></li>
-                    <li data-bind="foreach: markers"><a href="" data-bind="text: name"></a></li>
+                <h3>Neighborhood Map project</h3>
+                <ul class="menu-links" data-bind="foreach: markers">
+                    <li data-bind="text: name, click: menuLinkAction"></li>
                 </ul>
             </nav>
             <div class="row">
@@ -41,9 +41,6 @@
                             </a>
                         </span>
                         <input type="text" id="query" data-bind="value: query, valueUpdate: 'afterkeydown'" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
                     </div>
                 </div>
             </div>

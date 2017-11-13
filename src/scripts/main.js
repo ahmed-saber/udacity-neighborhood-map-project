@@ -32,7 +32,9 @@ function addMarker(location) {
     location.marker = marker;
     location.marker.addListener('click', function () {
         // CLOSE OTHER WINDOWS
-        locations.forEach((loc)=>{loc.infoWindow.close();});
+        locations.forEach((loc) => {
+            loc.infoWindow.close();
+        });
         location.infoWindow.open(map, this);
         location.marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(function () {
@@ -42,10 +44,10 @@ function addMarker(location) {
     // ADD CLICK EVENT
     location.infoWindow = new google.maps.InfoWindow({
         content: `
-            <p>Name: ${info.name}</p>
-            <p>Category: ${info.categories[0].name}</p>
-            <p>Country: ${info.location.country}</p>
-            <p>State: ${info.location.state}</p>
+            ${info.name ? '<p>Name: '+info.name+'</p>' : ''}
+            ${info.categories[0].name ? '<p>Category: '+info.categories[0].name+'</p>' : ''}
+            ${info.location.country ? '<p>Country: '+info.location.country+'</p>' : ''}
+            ${info.location.state ? '<p>State: '+info.location.state+'</p>' : ''}
         `
     });
     location.menuLinkAction = function () {
@@ -72,9 +74,9 @@ function updateLists(locations) {
     var bounds = new google.maps.LatLngBounds();
     // LOOP ON MARKERS
     locations.forEach(function (location) {
-        if(location.name){
+        if (location.name) {
             addMarker(location);
-        }else{
+        } else {
             callApi(location);
         }
         bounds.extend(location);
@@ -93,11 +95,11 @@ function AppViewModel() {
         // CLEAR MARKERS
         clearMarkers();
         // FILTER BY LOCATION NAME
-        var newlocations = locations.filter(function(location){
+        var newlocations = locations.filter(function (location) {
             // VARS
             let query = self.query().toLowerCase();
             let result = (location.name.toLowerCase().search(query) >= 0);
-            if(result){
+            if (result) {
                 addMarker(location);
             }
             return result;
@@ -107,6 +109,11 @@ function AppViewModel() {
     });
     // MARKERS
     this.markers = markers;
+    // TOGGLE MENU
+    this.TabClass = ko.observable(false);
+    this.menuToggleBtn = function(){
+        this.TabClass(!this.TabClass());
+    };
 }
 
 // GOOGLE MAPS API CALLBACK
@@ -121,29 +128,22 @@ function initMap() {
 }
 
 // GET LOCATION DETAILS
-function callApi(location){
+function callApi(location) {
     $.ajax({
         url: apiURL,
         data: {
             ll: `${location.lat},${location.lng}`
-        },
-        success: function (data) {
-            // VARS
-            location.info = data;
-            addMarker(location);
-        },
-        error:function(){
-            alert("There is an error with the Foursquare API call.");
         }
-    });
+    }).done(function (data) {
+        // VARS
+        location.info = data;
+        addMarker(location);
+    }).fail(function () {
+        alert("There is an error with the Foursquare API call.");
+    })
 }
 
-// Menu toggle btn
-$('#menuToggleBtn').click(function () {
-    $('.menu-holder').toggleClass('open');
-});
-
 // error handler
-function googleApi(){
+function googleApi() {
     alert("Google Maps API has failed to load.");
 }
